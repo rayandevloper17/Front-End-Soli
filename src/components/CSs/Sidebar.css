@@ -1,0 +1,180 @@
+.sidebar {
+  padding-left: 20px;
+  border-radius: 25px;
+  width: 285px;
+  height: 100vh;
+  position: fixed;
+  left: 15px;
+  top: 100px;
+  background: rgb(121 161 196 / 35%);  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 50px;
+  right: -50px;
+  background: rgb(121 161 196 / 33%);
+
+  border: none;
+  color: #1e1b1b;
+  padding: 22px;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 20px 30px 20px;  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(121, 161, 196, 0.667);
+}
+
+.open-sidebar-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #100f0f;
+  padding: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.open-sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.language-toggle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+
+.language-toggle > div {
+  display: flex;
+  margin-left: 15px;
+}
+
+.language-toggle button {
+  background: transparent;
+  color: #181717;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-toggle button.active,
+.language-toggle button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-bar {
+  margin-right: 10px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: #0f0e0e;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.search-bar input:hover {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.search-bar input:focus {
+  border-radius: 25px;
+  border: 2px solid #849de7; /* Subtle focus color */
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+.search-bar svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.nav {
+  flex-grow: 1;
+}
+.nav a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use inherited color for links */
+}
+
+.nav li {
+  list-style-type: none; /* Remove bullet points if any */
+  margin: 10px 0; /* Add spacing between items */
+}
+.nav li:hover {
+  /* Optional: add a hover effect */
+  background-color: #f0f0f0; /* Change background on hover */
+  border-radius: 5px; /* Add border-radius for better look */
+}
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  color: #131212;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav ul li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.nav ul li svg {
+  margin-right: 10px;
+}
+
+.nav ul li span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Assuming a dark background for the main content */
+body {
+  background: #1a1a2e;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}

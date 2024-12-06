@@ -1,0 +1,346 @@
+/* Modern CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Main container with gradient background */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f6f9fc 0%, #ecf3f9 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Form section styling */
+.form-section {
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+}
+
+/* Row layout */
+.row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Column styling */
+.col {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* Input fields styling */
+.input-field,
+.select-field {
+  width: 100%; /* 50% width on larger screens */
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+/* For mobile screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .input-field,
+  .select-field {
+    width: 50%; /* 100% width on mobile */
+  }
+}
+.input-field:focus,
+.select-field:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: white;
+}
+
+/* Input with icon styling */
+.input-icon {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-icon i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+.input-icon .input-field {
+  padding-left: 2.5rem;
+}
+
+/* Textarea styling */
+.note-area {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.note-area:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: white;
+}
+
+/* Warning text styling */
+.warning-text {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin: 1rem 0;
+}
+
+.warning {
+  font-weight: 600;
+}
+
+/* Button styling */
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-add {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-add:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.btn-close {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-close:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  /* Adjust layout for tablets */
+  .container {
+    padding: 1.5rem;
+  }
+
+  .form-section {
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .button-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust layout for mobile */
+  .container {
+    padding: 1rem;
+  }
+
+  .form-section {
+    padding: 1.5rem;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .button-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust for very small screens (phones in portrait mode) */
+  .input-field,
+  .select-field,
+  .note-area {
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .label {
+    font-size: 0.85rem;
+  }
+
+  .input-field {
+    font-size: 0.875rem;
+  }
+}
+
+/* Autocomplete dropdown */
+.autocomplete-dropdown {
+  position: absolute;
+  background: rgb(63 81 181);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  border-radius: 0.75rem;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.3);
+  margin-top: 0.5rem;
+  transform-origin: top;
+  animation: dropdownFade 0.2s ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 20px;
+}
+
+.autocomplete-dropdown li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(209, 213, 219, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.autocomplete-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-dropdown li:hover {
+  background: rgb(63 81 181);
+  color: #10e14c;
+  transform: translateX(4px);
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .autocomplete-dropdown {
+    background: rgb(233, 234, 238);
+    border-color: rgba(255, 252, 252, 0.3);
+    color: #0b50ff;
+  }
+
+  .autocomplete-dropdown li {
+    color: #0b50ff;
+    border-bottom-color: rgba(55, 65, 81, 0.2);
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .autocomplete-dropdown li:hover,
+  .autocomplete-dropdown li.focused {  /* Focused item style */
+    background: rgb(63 81 181);
+    color: #ffffff;
+  }
+}
+.focused {
+  background-color: #ddd; /* Change to any color you prefer */
+}

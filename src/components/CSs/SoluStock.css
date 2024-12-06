@@ -1,0 +1,162 @@
+/* SoluStock.css */
+
+/* Container for the form */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Form Section Styling */
+  .form-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Label Styling */
+  .label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  /* Input and Select Field Styling */
+  .input-field, .select-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  .input-icon {
+    position: relative;
+  }
+  
+  .input-icon i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  
+  /* Textarea Styling */
+  .note-area {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-height: 100px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Button Styling */
+  .btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-add {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+  }
+  
+  .btn-add:hover {
+    background-color: #5753ff;
+  }
+  
+  .btn-close {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
+  .btn-close:hover {
+    background-color: #e53935;
+  }
+  
+  /* Responsive Flexbox Layout */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .col {
+    flex: 1 1 30%; /* default to 30% width */
+    min-width: 250px;
+  }
+  
+  .col input, .col select {
+    width: 100%; /* Ensure full width for input fields */
+  }
+  
+  /* Autocomplete Dropdown */
+  .autocomplete-dropdown {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .autocomplete-dropdown li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .autocomplete-dropdown li:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1024px) {
+    /* Adjust layout for tablets */
+    .col {
+      flex: 1 1 48%; /* 2 items per row */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Adjust layout for mobile */
+    .col {
+      flex: 1 1 100%; /* 1 item per row */
+    }
+  
+    .container {
+      padding: 10px;
+    }
+  
+    .form-section {
+      padding: 15px;
+    }
+  
+    .btn {
+      width: 100%; /* Make buttons full-width */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Adjust for very small screens (phones in portrait mode) */
+    .input-field, .select-field, .note-area {
+      padding: 10px;
+    }
+    .btn {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  }
+  
+  

@@ -1,0 +1,305 @@
+/* AddUser.css */
+
+/* Color Variables */
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #4f46e5;
+  --success-color: #22c55e;
+  --error-color: #ef4444;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --background-gradient: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+/* Main Add User Container */
+.add-user {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: var(--background-gradient);
+}
+
+/* Heading Style */
+.add-user h1 {
+  text-align: center;
+  color: var(--text-primary);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Form Container */
+.form {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Form Section Style */
+.form-section {
+  width: 100%;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.form-section:hover {
+  transform: translateY(-2px);
+}
+
+.form-section h2 {
+  color: var(--primary-color);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.form-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Form Group Style */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  outline: none;
+  background: white;
+}
+
+/* Navigation Button Styling */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+  gap: 1rem; /* Spacing between buttons */
+}
+
+.btn {
+  min-width: 160px;
+  height: 48px;
+  padding: 0 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-btn {
+  
+  width: 100%;
+  background-color: #e5e7eb;
+  color: var(--text-primary);
+}
+
+.next-btn,
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.prev-btn:hover {
+  background-color: #d1d5db;
+}
+
+.next-btn:hover,
+.submit-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Snackbar Styling */
+.snackbar {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.3s ease-out;
+  z-index: 1000;
+}
+
+.success {
+  background-color: var(--success-color);
+}
+
+.error {
+  background-color: var(--error-color);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .form-navigation {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Increased gap between buttons */
+  }
+
+  .btn,
+  .prev-btn,
+  .next-btn,
+  .submit-btn {
+    width: 100%;
+    max-width: 280px;
+    height: 44px;
+  }
+  
+  .snackbar {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-gradient: linear-gradient(135deg, #ffffff, #ffffff);
+    --text-primary: #f9fafb;
+    --text-secondary: #e5e7eb;
+  }
+
+  .add-user {
+    background: var(--background-gradient);
+  }
+
+  .form {
+    background: rgba(17, 24, 39, 0.7);
+  }
+
+  .form-section {
+    background: #374151;
+  }
+
+  .form-group input {
+    background: #4b5563;
+    border-color: #6b7280;
+    color: white;
+  }
+
+  .form-group input:focus {
+    background: #4b5563;
+  }
+
+  .prev-btn {
+    background-color: #e5e7eb;
+    color: var(--text-primary);
+  }
+}
+
+.btn-standard {
+  width: 100%;
+  height: 48px; /* Set a consistent height */
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

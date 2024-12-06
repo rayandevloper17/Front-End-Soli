@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Invoice</title>
+    <!-- Include jsPDF CDN -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div id="invoice-container" class="invoice-container">
+        <header>
+            <h2>Bon De Livraison</h2>
+            <p><strong>Commande N°:</strong> <span id="order-number"></span></p>
+            <p><strong>Date de commande:</strong> <span id="order-date"></span></p>
+        </header>
+    
+        <section class="invoice-table-container">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Code-barre</th>
+                        <th>Produit</th>
+                        <th>Quantité (pièces)</th>
+                        <th>Prix Unitaire</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table">
+                    <!-- Rows will be dynamically added -->
+                </tbody>
+            </table>
+        </section>
+    
+        <section class="invoice-summary">
+            <p><strong>Total Général:</strong> <span id="grand-total"></span></p>
+            <p><strong>Montant Payé:</strong> <span id="amount-paid"></span></p>
+            <p><strong>Dette Actuelle:</strong> <span id="current-debt"></span></p>
+        </section>
+    
+        <button id="print-button" class="print-button">Print Invoice</button>
+    </div>
+    
+    <script>
+        // Function to fetch and display invoice data
+        async function fetchAndPrintInvoice(id) {
+            try {
+                const response = await fetch(`http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${id}`);
+                const data = await response.json();
+    
+                // Ensure data is an array and it has products
+                if (Array.isArray(data) && data.length > 0) {
+                    const Norder = data[0]?.Norder || "N/A";
+                    const GeneralTotal = data[0]?.GeneralTotal || "0.00";
+                    const currentDebt = data[0]?.current_debt || "0.00";
+                    const MontantPay = data[0]?.MontantPay || "0.00";
+    
+                    // Set values to the page only if the elements exist
+                    const orderNumber = document.getElementById("order-number");
+                    const generalTotal = document.getElementById("grand-total");
+                    const currentDebtElem = document.getElementById("current-debt");
+                    const montantPay = document.getElementById("amount-paid");
+    
+                    if (orderNumber) orderNumber.textContent = Norder;
+                    if (generalTotal) generalTotal.textContent = GeneralTotal;
+                    if (currentDebtElem) currentDebtElem.textContent = currentDebt;
+                    if (montantPay) montantPay.textContent = MontantPay;
+    
+                    // Populate table rows
+                    const tbody = document.getElementById("product-table");
+                    tbody.innerHTML = ""; // Clear previous rows
+    
+                    data.forEach(product => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                        <td>${product.Codebaar || "N/A"}</td>
+                        <td>${product.Product || "N/A"}</td>
+                        <td>${product.Quantitypiece || "0"}</td>
+                        <td>${product.Price1 || "0.00"}</td>
+                        <td>${product.total || "0.00"}</td>
+                    `;
+                        tbody.appendChild(row);
+                    });
+    
+                    // Show the invoice container
+                    document.getElementById("invoice-container").style.display = "block";
+                } else {
+                    console.error("Invalid data format or empty response:", data);
+                }
+            } catch (error) {
+                console.error("Error fetching invoice:", error);
+            }
+        }
+    
+        // Function to generate PDF from the invoice container
+        function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Capture the content of the invoice container as an image
+        html2canvas(document.getElementById("invoice-container"), {
+            onrendered: function (canvas) {
+                const imgData = canvas.toDataURL("image/png");
+                doc.addImage(imgData, "PNG", 10, 10);
+                doc.save("invoice.pdf"); // Save the generated PDF
+            }
+        });
+    }
+    
+        // Add event listener for the print button
+        document.getElementById("print-button").addEventListener("click", generatePDF);
+    
+        // Call the fetchAndPrintInvoice function when the page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchAndPrintInvoice('6740ffbf2f8bcb479aa85d04');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.chart-container {
+    margin: 100px;
+    position: relative;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .chart-container canvas {
+    max-height: 400px;
+  }
+  
+  @media (max-width: 768px) {
+    .chart-container {
+      margin-top: 1rem;
+    }
+  }

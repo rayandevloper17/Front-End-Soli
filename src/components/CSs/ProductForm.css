@@ -1,0 +1,203 @@
+/* src/CSS/ProductForm.css */
+
+.add-user {
+  max-width: 100%;
+  margin: 2rem auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-user h1 {
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: cursive;
+}
+
+.form-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: #555;
+}
+
+.form-group input {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  width: 100%;
+  height: 50px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:hover{
+
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  width: 100%;
+  height: 50px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.form-group input:focus {
+  background-color: white;
+  border-color: #5454a1;
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f8db04;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #846205;
+  transform: translateY(-2px);
+  color: #f3f4f6;
+}
+
+/* Keyframes for fadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .add-user {
+    padding: 20px;
+  }
+
+  .add-user h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .submit-btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-user {
+    padding: 10px;
+  }
+
+  .add-user h1 {
+    font-size: 1.2rem;
+  }
+
+  .form-group input,
+  .submit-btn {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+}
+
+/* Snackbar styles */
+.snackbar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  border-radius: 4px;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.custom-upload-button {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(135deg, #dcecdd, #00b6b9); /* Gradient background */
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slight shadow for a raised effect */
+  width: 100%;
+}
+
+.custom-upload-button:hover {
+  background: linear-gradient(135deg, #dcecdd, #042121); /* Gradient background */
+  transform: translateY(-4px); /* More pronounced raise effect */
+}
+
+.custom-upload-button:active {
+  background: linear-gradient(135deg, #dcecdd, #00b6b9); /* Gradient background */
+  transform: translateY(0); /* No raised effect when clicked */
+}
+
+.upload-icon {
+  margin-right: 10px; /* Space between the icon and text */
+  font-size: 24px; /* Larger icon size */
+}
+
+.image-preview img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for the image preview */
+}
+

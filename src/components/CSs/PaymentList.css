@@ -1,0 +1,164 @@
+.payment-list-container {
+  padding: 2rem;
+  background-color: #f0f2f5;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  margin: 140px;
+  margin-top: 0px;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-radius: 22px;
+}
+
+
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.payment-table th,
+.payment-table td {
+  padding: 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.payment-table th {
+  background-color: #f1f5f9;
+  font-weight: bold;
+}
+
+.row-even {
+  background-color: #f9fbfd;
+}
+
+.row-odd {
+  background-color: #ffffff;
+}
+
+.table-row:hover {
+  background-color: #e8f1ff;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.view-icon:hover {
+  color: #3498db;
+}
+
+.edit-icon:hover {
+  color: #f1c40f;
+}
+
+.delete-icon:hover {
+  color: #e74c3c;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.delete-modal {
+  width: 400px;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+  color: #000;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+.close-button:hover{
+  position: absolute;
+  background-color: #ac0a0a;
+  border: none;
+  font-size: 1.5rem;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 15px;
+
+}
+
+h3 {
+  color: rgb(223, 157, 157);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.confirm-button,
+.cancel-button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button {
+  background-color: #e74c3c;
+  color: #ffffff;
+  margin-right: 0.5rem;
+}
+
+.confirm-button:hover {
+  background-color: #d43a2a;
+}
+
+.cancel-button {
+  background-color: #f1f5f9;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background-color: #e0e5ec;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

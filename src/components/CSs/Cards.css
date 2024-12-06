@@ -1,0 +1,93 @@
+.card {
+  border-radius: 12px; /* Softer corners for a modern look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e4e4e4;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif; /* Clean, modern font */
+}
+
+.card button {
+  background: transparent;
+  color: transparent;
+  border: none;
+  border-radius: 25px; /* Fully rounded for a sleek look */
+  padding: 4px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.card button:hover {
+  background: transparent;
+  transform: translateY(-2px); /* Slight hover lift for interactivity */
+}
+
+.card button:active {
+  transform: translateY(0); /* Remove lift on click */
+  
+}
+
+/* CSS for the circular card */
+.circular-card {
+  width: 200px;  /* Set fixed size */
+  height: 200px; /* Set fixed size */
+  border-radius: 50%; /* Make the card circular */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.circular-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Make sure the image fits well inside the circular card */
+  border-radius: 50%; /* Make the image circular */
+}
+
+.circular-card button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  border-radius: 80px; /* Rounded button */
+}
+
+.card-reception {
+  background-color: #f0ad4e; /* Example background color */
+  border-radius: 12px; /* Optional: Add border radius if needed */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better appearance */
+  padding: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-reception:hover {
+  background-color: #ec971f; /* Change color on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

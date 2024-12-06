@@ -1,0 +1,136 @@
+.card-grid {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-bottom: 5vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for larger screens */
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+  position: relative; /* Required for positioning the circle card */
+  
+}
+
+/* For medium-sized screens (tablets) */
+@media (max-width: 1000px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+}
+
+/* For smaller screens (phones) */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr; /* 1 column for very small screens */
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+}
+
+/* Styles for the regular cards */
+.card {
+  color: black;
+  height: auto; /* Let the height adjust based on content */
+  background-color: #f0ad4e; /* Example background color */
+  border-radius: 12px; /* General border radius */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(209, 50, 25, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Ensure content doesn't spill out */
+  background-color: var(--card-bg-color, #5898eb); /* Use dynamic background colors */
+}
+
+.commandescard{
+  height: auto; /* Let the height adjust based on content */
+  background-color: #f0ad4e; /* Example background color */
+  border-radius: 12px; /* General border radius */
+  padding: 20px;
+  height: 75%;
+  box-shadow: 0 4px 6px rgba(209, 50, 25, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Ensure content doesn't spill out */
+  background-color: var(--card-bg-color, #5898eb); /* Use dynamic background colors */
+ }
+/* Hover effect for regular cards */
+.card:hover {
+  transform: scale(1.05); /* Slight scaling effect */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles for the circular card */
+.cardciciler {
+  position: absolute; /* Position it absolutely */
+  top: 50%;
+  left: 50%; /* Center it horizontally */
+  transform: translate(-50%, -50%);
+  width: 150px; /* Set width for circular card */
+  height: 150px; /* Set height for circular card */
+  border-radius: 50%; /* Make it circular */
+  background-color: #c55452; /* Example color, adjust as needed */
+  border: 7px solid #f7f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Ensure it overlaps other cards */
+}
+.cardciciler:hover {
+  position: absolute; /* Position it absolutely */
+  top: 50%;
+  left: 50%; /* Center it horizontally */
+  transform: translate(-50%, -50%);
+  width: 150px; /* Set width for circular card */
+  height: 150px; /* Set height for circular card */
+  border-radius: 50%; /* Make it circular */
+  background-color: #c55452; /* Example color, adjust as needed */
+  border: 7px solid #f7f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Ensure it overlaps other cards */
+}
+
+
+/* Styles for the image inside the circular card */
+.cardciciler img {
+  padding-top: 18px;
+  width: 40%; /* Ensure image fits inside the circular card */
+  border-radius: 30%; /* Circle image */
+}
+
+
+/* monile app design */
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .cardciciler {
+    position: relative; /* Remove absolute positioning */
+    width: 120px; /* Adjust size for mobile screens */
+    height: 120px; /* Adjust size for mobile screens */
+    margin-top: 20px; /* Add margin to separate from other cards */
+    margin-left: auto; /* Center it horizontally */
+    margin-right: auto; /* Center it horizontally */
+  }
+
+  /* Ensure the image inside the circular card also scales properly */
+  .cardciciler img {
+    width: 50%; /* Adjust image size to fit smaller circular card */
+    border-radius: 50%;
+  }
+}
+
+
+/* Ensure the surrounding cards have appropriate margins to accommodate the circular card */
+.card:nth-child(5),
+.card:nth-child(6) {
+  margin-bottom: 80px; /* Add space at the bottom for the circle card */
+}

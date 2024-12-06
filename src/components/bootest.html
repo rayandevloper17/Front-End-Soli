@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis 4.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #cccccc;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Image Analysis 4.0</h1>
+    <input type="file" id="imageInput" accept="image/*" />
+    <button id="analyzeButton" disabled>Analyze Image</button>
+
+    <div id="result">
+        <h3>Analysis Result:</h3>
+        <pre id="analysisResult"></pre>
+    </div>
+</div>
+
+<script>
+    const analyzeButton = document.getElementById('analyzeButton');
+    const imageInput = document.getElementById('imageInput');
+    const analysisResult = document.getElementById('analysisResult');
+
+    const subscriptionKey = "b068de8517b5444482c680e4bd2c5781"; // Your API key
+    const endpoint = "https://eastus.api.cognitive.microsoft.com/";
+
+    // Enable the analyze button when an image is selected
+    imageInput.addEventListener('change', () => {
+        analyzeButton.disabled = !imageInput.files.length;
+    });
+
+    // Analyze the selected image when the button is clicked
+    analyzeButton.addEventListener('click', async () => {
+        if (!imageInput.files.length) {
+            alert("Please select an image.");
+            return;
+        }
+
+        const file = imageInput.files[0];
+        const reader = new FileReader();
+
+        // Convert the image to base64 format
+        reader.readAsDataURL(file);
+        reader.onloadend = async () => {
+            const base64Image = reader.result.split(',')[1]; // Remove the base64 header
+            await analyzeImage(base64Image);
+        };
+    });
+
+    // Call the Image Analysis API
+    async function analyzeImage(base64Image) {
+        try {
+            const url = `${endpoint}computervision/imageanalysis:analyze?api-version=2024-10-08-preview&features=Caption,Tags,Objects,Read`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Ocp-Apim-Subscription-Key': subscriptionKey,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    image: base64Image, // Pass the base64-encoded image
+                    language: "en",
+                    genderNeutralCaption: true
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            displayResult(data);
+        } catch (error) {
+            analysisResult.textContent = `Error: ${error.message}`;
+        }
+    }
+
+    // Display the analysis result
+    function displayResult(data) {
+        analysisResult.textContent = JSON.stringify(data, null, 2);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* Header styles */
+.header {
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: #1a1a1a; /* Dark background for modern look */
+  color: white; /* White text color for contrast */
+  padding: 16px 24px; /* Padding for spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Toolbar container */
+.toolbar {
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between sections */
+  align-items: center; /* Center items vertically */
+  gap: 16px; /* Add gap between toolbar items */
+}
+
+/* Expiring products section */
+.expiring-products-container {
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  gap: 10px; /* Space between items */
+}
+
+/* Chip styles */
+.chip {
+  display: flex; /* Flexbox for icon and text */
+  align-items: center; /* Center icon and text vertically */
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  color: white; /* White text */
+  padding: 8px 12px; /* Padding for the chip */
+  border-radius: 16px; /* Rounded corners */
+  margin-right: 12px; /* Space between chips */
+}
+
+/* Button styles */
+.preview-button {
+  display: flex; /* Flexbox for icon and text */
+  align-items: center; /* Center icon and text vertically */
+  background-color: #3f51b5; /* Blue background */
+  color: white; /* White text */
+  padding: 8px 12px; /* Padding for button */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.preview-button:hover {
+  background-color: #5c6bc0; /* Darker blue on hover */
+}
+
+/* User greeting section */
+.user-greeting-container {
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+}
+
+/* Attention section */
+.attention-container {
+  color: aliceblue;
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Center items vertically */
+}
+
+/* Greeting text styles */
+.greeting-text {
+  margin-right: 8px; /* Space between greeting text and user name */
+}
+
+/* User name styles */
+.user-name {
+  font-weight: bold; /* Bold user name */
+  margin-right: 16px; /* Space before the admin chip */
+}
+
+/* Attention chip styles */
+.attention-chip {
+  background-color: rgba(255, 0, 0, 0.1); /* Light red background for attention */
+  color: white; /* Set text color to white */
+  padding: 8px 12px; /* Padding for the chip */
+}
+
+.attention-text {
+  margin-left: 8px; /* Space between the icon and text */
+}
+
+/* Admin chip styles */
+.admin-chip {
+  background-color: rgba(0, 255, 0, 0.1); /* Light green background for admin */
+  color: #388e3c; /* Green text */
+  padding: 8px 12px; /* Padding for the chip */
+}
+
+/* Responsive design for different screen sizes */
+
+/* Tablet and mobile screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .toolbar {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .expiring-products-container,
+  .user-greeting-container {
+    margin-bottom: 10px; /* Add spacing between sections */
+  }
+
+  .chip {
+    margin-right: 8px; /* Reduce space between chips */
+  }
+
+  .preview-button {
+    padding: 6px 10px; /* Smaller button padding */
+  }
+
+  .attention-container {
+    font-size: 0.9rem; /* Adjust font size */
+  }
+}
+
+/* Mobile screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 16px; /* Reduce padding on smaller screens */
+  }
+
+  .toolbar {
+    flex-direction: column; /* Stack toolbar items vertically */
+    align-items: flex-start; /* Align items to the start */
+    gap: 10px; /* Reduce gap between toolbar items */
+  }
+
+  .expiring-products-container,
+  .user-greeting-container {
+    margin-bottom: 8px; /* Add more spacing between elements */
+  }
+
+  .chip {
+    margin-right: 6px; /* Less margin between chips */
+    padding: 6px 10px; /* Adjust chip padding */
+    font-size: 0.85rem; /* Slightly smaller font size for chips */
+  }
+
+  .preview-button {
+    padding: 6px 8px; /* Smaller button padding */
+    font-size: 0.85rem; /* Slightly smaller font size */
+  }
+
+  .attention-container {
+    font-size: 0.85rem; /* Adjust font size for better readability */
+  }
+
+  .attention-chip,
+  .admin-chip {
+    font-size: 0.85rem; /* Smaller font size for chips */
+  }
+
+  .user-greeting-container {
+    gap: 8px; /* Reduce gap between greeting text and user name */
+  }
+}
+
+/* Small mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 12px; /* Further reduce header padding */
+  }
+
+  .toolbar {
+    flex-direction: column; /* Stack toolbar items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .chip {
+    padding: 6px 10px; /* Smaller chip padding */
+    font-size: 0.75rem; /* Adjust font size for chips */
+  }
+
+  .preview-button {
+    padding: 6px 8px; /* Make buttons smaller */
+    font-size: 0.75rem; /* Smaller font size */
+  }
+
+  .attention-container {
+    font-size: 0.75rem; /* Adjust font size */
+  }
+
+  .expiring-products-container,
+  .user-greeting-container {
+    margin-bottom: 6px; /* Reduce space between elements */
+  }
+
+  .attention-chip,
+  .admin-chip {
+    font-size: 0.75rem; /* Smaller font size for chips */
+  }
+}
