@@ -178,7 +178,7 @@ const ProductReceptionForm = () => {
     try {
       // Create the reception
       const response = await axios.post(
-        "http://84.247.161.47:5000/api/listBonReception",
+        "https://www.k-orissa.com:5000/api/listBonReception",
         receptionData,
         {
           headers: { "Content-Type": "application/json" },
@@ -203,7 +203,7 @@ const ProductReceptionForm = () => {
         if (supplierId) {
           console.log("Extracted Supplier ID:", supplierId);
           const supplierResponse = await axios.get(
-            `http://84.247.161.47:5000/api/suppliers/${supplierId}`
+            `https://www.k-orissa.com:5000/api/suppliers/${supplierId}`
           );
           const supplierData = supplierResponse.data;
           setSupplername(supplierData._id)
@@ -217,7 +217,7 @@ const ProductReceptionForm = () => {
 
         // Now, make a second API call to fetch products based on the _id
         const productResponse = await axios.get(
-          `http://84.247.161.47:5000/api/productListReception/receptionProducts/${lastInsertedId}`
+          `https://www.k-orissa.com:5000/api/productListReception/receptionProducts/${lastInsertedId}`
         );
 
         if (productResponse.status === 200) {
@@ -245,7 +245,7 @@ const ProductReceptionForm = () => {
 
       // Update the supplier's ancienPrix
       await axios.put(
-        `http://84.247.161.47:5000/api/suppliers/${selectedSupplier}`,
+        `https://www.k-orissa.com:5000/api/suppliers/${selectedSupplier}`,
         {
           ancienPrix: formattedAncienPrix, // Use formattedAncienPrix here
         }
@@ -265,7 +265,7 @@ const ProductReceptionForm = () => {
   const fetchLastNorder = async () => {
     try {
       const response = await axios.get(
-        "http://84.247.161.47:5000/api/listBonReception/all"
+        "https://www.k-orissa.com:5000/api/listBonReception/all"
       ); // Update with your API endpoint
       const listBonReceptions = response.data;
 
@@ -287,7 +287,7 @@ const ProductReceptionForm = () => {
   // Fetch all suppliers from the server
   const getAllSuppliers = async () => {
     try {
-      const response = await axios.get("http://84.247.161.47:5000/api/suppliers");
+      const response = await axios.get("https://www.k-orissa.com:5000/api/suppliers");
       setSuppliers(response.data);
     } catch (error) {
       console.error("Error fetching suppliers", error);
@@ -312,7 +312,7 @@ const ProductReceptionForm = () => {
     if (query.length > 1) {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/products/search?q=${query}`
+          `https://www.k-orissa.com:5000/api/products/search?q=${query}`
         );
         updatedProducts[productIndex].searchResults = response.data;
         setProducts(updatedProducts);

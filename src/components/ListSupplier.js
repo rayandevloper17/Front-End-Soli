@@ -19,7 +19,7 @@ const ListSupplier = () => {
 
     const fetchSuppliers = async () => {
         try {
-            const response = await fetch('http://84.247.161.47:5000/api/suppliers');
+            const response = await fetch('https://www.k-orissa.com:5000/api/suppliers');
             const data = await response.json();
             setSuppliers(data);
         } catch (error) {
@@ -40,7 +40,7 @@ const ListSupplier = () => {
 
     const confirmDelete = async () => {
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/suppliers/${selectedSupplier._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/suppliers/${selectedSupplier._id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -63,7 +63,7 @@ const ListSupplier = () => {
     const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/suppliers/${selectedSupplier._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/suppliers/${selectedSupplier._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

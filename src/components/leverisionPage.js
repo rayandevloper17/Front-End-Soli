@@ -222,7 +222,7 @@ const ProductLeverision = () => {
     try {
       // First API call to create the Livraison
       const response = await axios.post(
-        "http://84.247.161.47:5000/api/listLivraison",
+        "https://www.k-orissa.com:5000/api/listLivraison",
         receptionData,
         {
           headers: {
@@ -246,7 +246,7 @@ const ProductLeverision = () => {
         if (supplierId) {
           console.log("Extracted Supplier ID:", supplierId);
           const supplierResponse = await axios.get(
-            `http://84.247.161.47:5000/api/suppliers/${supplierId}`
+            `https://www.k-orissa.com:5000/api/suppliers/${supplierId}`
           );
           const supplierData = supplierResponse.data;
           setSupplername(supplierData._id)
@@ -260,7 +260,7 @@ const ProductLeverision = () => {
 
         // Now, make a second API call to fetch products based on the _id
         const productResponse = await axios.get(
-          `http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${lastInsertedId}`
+          `https://www.k-orissa.com:5000/api/listLivraisonProduct/ProductsByLivraison/${lastInsertedId}`
         );
 
         if (productResponse.status === 200) {
@@ -303,7 +303,7 @@ const ProductLeverision = () => {
   const fetchLastNorder = async () => {
     try {
       const response = await axios.get(
-        "http://84.247.161.47:5000/api/listLivraison/"
+        "https://www.k-orissa.com:5000/api/listLivraison/"
       ); // Update with your API endpoint
       const listBonReceptions = response.data;
 
@@ -326,7 +326,7 @@ const ProductLeverision = () => {
   // Fetch all suppliers from the server
   const getAllSuppliers = async () => {
     try {
-      const response = await axios.get("http://84.247.161.47:5000/api/suppliers"); // Adjust the API endpoint as needed
+      const response = await axios.get("https://www.k-orissa.com:5000/api/suppliers"); // Adjust the API endpoint as needed
       setSuppliers(response.data);
     } catch (error) {
       console.error("Error fetching suppliers", error);
@@ -353,7 +353,7 @@ const ProductLeverision = () => {
     if (query.length > 1) {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/lisrProductSiller/search?q=${query}`
+          `https://www.k-orissa.com:5000/api/lisrProductSiller/search?q=${query}`
         );
         updatedProducts[productIndex].searchResults = response.data;
         setProducts(updatedProducts);
@@ -523,7 +523,7 @@ const ProductLeverision = () => {
 
     try {
       // Fetch the product details using the search query to get the available quantity
-      const response = await axios.get(`http://84.247.161.47:5000/api/lisrProductSiller/search?q=${productName}`);
+      const response = await axios.get(`https://www.k-orissa.com:5000/api/lisrProductSiller/search?q=${productName}`);
 
       // Assuming the response contains an array of products, and we're selecting the first one
       const productData = response.data[0];

@@ -133,7 +133,7 @@ const EditUser = () => {  // Assuming userId is passed as a prop
     console.log(id);
     
     try {
-      const response = await axios.get(`http://84.247.161.47:5000/api/suppliers/${id}`);
+      const response = await axios.get(`https://www.k-orissa.com:5000/api/suppliers/${id}`);
       setFormData(response.data);  // Populate form data with the fetched user
       console.log(response.data);
       
@@ -168,7 +168,7 @@ const EditUser = () => {  // Assuming userId is passed as a prop
     }
 
     try {
-      const response = await axios.put(`http://84.247.161.47:5000/api/suppliers/${id}`, formData); // Update user by ID
+      const response = await axios.put(`https://www.k-orissa.com:5000/api/suppliers/${id}`, formData); // Update user by ID
       console.log('User updated successfully:', response.data);
       setSnackbar({
         message: 'User updated successfully!',

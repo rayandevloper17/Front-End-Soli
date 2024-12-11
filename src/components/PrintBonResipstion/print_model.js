@@ -25,14 +25,14 @@ const PrinterModal = ({ isOpen, onClose, productToPrint, supplername }) => {
     try {
       // Fetch supplier details
       const responsesuppler = await axios.get(
-        `http://84.247.161.47:5000/api/suppliers/${supplername}`
+        `https://www.k-orissa.com:5000/api/suppliers/${supplername}`
       );
       const supplier = responsesuppler.data[0];
       console.log("Supplier Response:", responsesuppler.data);
 
       // Fetch all products for the given productToPrint
       const response = await axios.get(
-        `http://84.247.161.47:5000/api/productListReception/receptionProducts/${productToPrint}`
+        `https://www.k-orissa.com:5000/api/productListReception/receptionProducts/${productToPrint}`
       );
       const invoiceData = response.data; // Expecting an array of products
       console.log("Invoice Data:", invoiceData);

@@ -190,7 +190,7 @@ const EdiPageTablelevrision = () => {
     const fetchInvoiceData = async () => {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${_id}`
+          `https://www.k-orissa.com:5000/api/listLivraisonProduct/ProductsByLivraison/${_id}`
         );
         const invoiceData = response.data;
 
@@ -209,7 +209,7 @@ const EdiPageTablelevrision = () => {
 
             // Fetch the supplier details using the extracted supplier ID
             const supplierResponse = await axios.get(
-              `http://84.247.161.47:5000/api/suppliers/${supplierId}`
+              `https://www.k-orissa.com:5000/api/suppliers/${supplierId}`
             );
             const supplierData = supplierResponse.data;
 
@@ -224,7 +224,7 @@ const EdiPageTablelevrision = () => {
           const listbonreceptioneId = invoice.ListlivraisonId;
           if (listbonreceptioneId) {
             const bonReceptionResponse = await axios.get(
-              `http://84.247.161.47:5000/api/listLivraison/${listbonreceptioneId}`
+              `https://www.k-orissa.com:5000/api/listLivraison/${listbonreceptioneId}`
             );
             const bonReceptionData = bonReceptionResponse.data;
 
@@ -297,7 +297,7 @@ const EdiPageTablelevrision = () => {
     try {
       // Update the reception
       const receptionResponse = await axios.put(
-        `http://84.247.161.47:5000/api/listLivraison/${_id}`,
+        `https://www.k-orissa.com:5000/api/listLivraison/${_id}`,
         updatedLeverisionData
       );
       console.log("Reception updated successfully:", receptionResponse.data);
@@ -336,14 +336,14 @@ const EdiPageTablelevrision = () => {
   const deleteOldProducts = async (LeverionID) => {
     try {
       const response = await axios.delete(
-        `http://84.247.161.47:5000/api/listLivraisonProduct/${LeverionID}`
+        `https://www.k-orissa.com:5000/api/listLivraisonProduct/${LeverionID}`
       );
 
       const response1 = await axios.delete(
-        `http://84.247.161.47:5000/api/listLivraison/${LeverionID}`
+        `https://www.k-orissa.com:5000/api/listLivraison/${LeverionID}`
       );
       // const response1 = await axios.delete(
-      //   `http://84.247.161.47:5000/api/lisrProductSiller/sold/${receptionId}`
+      //   `https://www.k-orissa.com:5000/api/lisrProductSiller/sold/${receptionId}`
       // );
 
       console.log("Old products deleted successfully:", response.data);
@@ -395,7 +395,7 @@ const EdiPageTablelevrision = () => {
 
     try {
       const response = await axios.post(
-        "http://84.247.161.47:5000/api/listLivraison",
+        "https://www.k-orissa.com:5000/api/listLivraison",
         receptionData,
         {
           headers: {
@@ -417,7 +417,7 @@ const EdiPageTablelevrision = () => {
         if (supplierId) {
           console.log("Extracted Supplier ID:", supplierId);
           const supplierResponse = await axios.get(
-            `http://84.247.161.47:5000/api/suppliers/${supplierId}`
+            `https://www.k-orissa.com:5000/api/suppliers/${supplierId}`
           );
           const supplierData = supplierResponse.data;
           setSupplername(supplierData._id)
@@ -430,7 +430,7 @@ const EdiPageTablelevrision = () => {
 
 
         const productResponse = await axios.get(
-          `http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${lastInsertedId}`
+          `https://www.k-orissa.com:5000/api/listLivraisonProduct/ProductsByLivraison/${lastInsertedId}`
         );
 
         if (productResponse.status === 200) {
@@ -495,7 +495,7 @@ const EdiPageTablelevrision = () => {
 
     try {
       const response = await axios.post(
-        "http://84.247.161.47:5000/api/listLivraison",
+        "https://www.k-orissa.com:5000/api/listLivraison",
         receptionData,
         {
           headers: {
@@ -517,7 +517,7 @@ const EdiPageTablelevrision = () => {
   const fetchLastNorder = async () => {
     try {
       const response = await axios.get(
-        "http://84.247.161.47:5000/api/listLivraison/"
+        "https://www.k-orissa.com:5000/api/listLivraison/"
       ); // Update with your API endpoint
       const listBonReceptions = response.data;
 
@@ -540,7 +540,7 @@ const EdiPageTablelevrision = () => {
   // Fetch all suppliers from the server
   const getAllSuppliers = async () => {
     try {
-      const response = await axios.get("http://84.247.161.47:5000/api/suppliers"); // Adjust the API endpoint as needed
+      const response = await axios.get("https://www.k-orissa.com:5000/api/suppliers"); // Adjust the API endpoint as needed
       setSuppliers(response.data);
     } catch (error) {
       console.error("Error fetching suppliers", error);
@@ -561,7 +561,7 @@ const EdiPageTablelevrision = () => {
     if (query.length > 1) {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/lisrProductSiller/search?q=${query}`
+          `https://www.k-orissa.com:5000/api/lisrProductSiller/search?q=${query}`
         );
         updatedProducts[productIndex].searchResults = response.data; // Set search results for the specific product
         setProducts(updatedProducts);
@@ -647,7 +647,7 @@ const EdiPageTablelevrision = () => {
 
     try {
       // Fetch the product details using the search query to get the available quantity
-      const response = await axios.get(`http://84.247.161.47:5000/api/lisrProductSiller/search?q=${productName}`);
+      const response = await axios.get(`https://www.k-orissa.com:5000/api/lisrProductSiller/search?q=${productName}`);
 
       // Assuming the response contains an array of products, and we're selecting the first one
       const productData = response.data[0];

@@ -72,7 +72,7 @@ const EDitingProductReceptionForm = () => {
     const fetchInvoiceData = async () => {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/productListReception/receptionProducts/${_id}`
+          `https://www.k-orissa.com:5000/api/productListReception/receptionProducts/${_id}`
         );
         const invoiceData = response.data;
 
@@ -91,7 +91,7 @@ const EDitingProductReceptionForm = () => {
 
             // Fetch the supplier details using the extracted supplier ID
             const supplierResponse = await axios.get(
-              `http://84.247.161.47:5000/api/suppliers/${supplierId}`
+              `https://www.k-orissa.com:5000/api/suppliers/${supplierId}`
             );
             const supplierData = supplierResponse.data;
 
@@ -107,7 +107,7 @@ const EDitingProductReceptionForm = () => {
           const listbonreceptioneId = invoice.ListbonreceptioneId;
           if (listbonreceptioneId) {
             const bonReceptionResponse = await axios.get(
-              `http://84.247.161.47:5000/api/listBonReception/${listbonreceptioneId}`
+              `https://www.k-orissa.com:5000/api/listBonReception/${listbonreceptioneId}`
             );
             const bonReceptionData = bonReceptionResponse.data;
 
@@ -214,13 +214,13 @@ const EDitingProductReceptionForm = () => {
     try {
       // Update the reception
       const receptionResponse = await axios.put(
-        `http://84.247.161.47:5000/api/listBonReception/${_id}`,
+        `https://www.k-orissa.com:5000/api/listBonReception/${_id}`,
         updatedReceptionData
       );
       console.log("Reception updated successfully:", receptionResponse.data);
 
       await axios.put(
-        `http://84.247.161.47:5000/api/suppliers/${selectedSupplier}`,
+        `https://www.k-orissa.com:5000/api/suppliers/${selectedSupplier}`,
         {
           ancienPrix: formattedAncienPrix, // Use formattedAncienPrix here
         }
@@ -242,10 +242,10 @@ const EDitingProductReceptionForm = () => {
   const deleteOldProducts = async (receptionId) => {
     try {
       const response = await axios.delete(
-        `http://84.247.161.47:5000/api/productListReception/${receptionId}`
+        `https://www.k-orissa.com:5000/api/productListReception/${receptionId}`
       );
       // const response1 = await axios.delete(
-      //   `http://84.247.161.47:5000/api/lisrProductSiller/sold/${receptionId}`
+      //   `https://www.k-orissa.com:5000/api/lisrProductSiller/sold/${receptionId}`
       // );
 
       console.log("Old products deleted successfully:", response.data);
@@ -296,7 +296,7 @@ const EDitingProductReceptionForm = () => {
 
     try {
       const response = await axios.post(
-        "http://84.247.161.47:5000/api/listBonReception",
+        "https://www.k-orissa.com:5000/api/listBonReception",
         receptionData,
         {
           headers: {
@@ -321,7 +321,7 @@ const EDitingProductReceptionForm = () => {
         if (supplierId) {
           console.log("Extracted Supplier ID:", supplierId);
           const supplierResponse = await axios.get(
-            `http://84.247.161.47:5000/api/suppliers/${supplierId}`
+            `https://www.k-orissa.com:5000/api/suppliers/${supplierId}`
           );
           const supplierData = supplierResponse.data;
           setSupplername(supplierData._id)
@@ -330,7 +330,7 @@ const EDitingProductReceptionForm = () => {
 
         }
         const productResponse = await axios.get(
-          `http://84.247.161.47:5000/api/productListReception/receptionProducts/${lastInsertedId}`
+          `https://www.k-orissa.com:5000/api/productListReception/receptionProducts/${lastInsertedId}`
         );
 
         if (productResponse.status === 200) {
@@ -364,7 +364,7 @@ const EDitingProductReceptionForm = () => {
   const fetchLastNorder = async () => {
     try {
       const response = await axios.get(
-        "http://84.247.161.47:5000/api/listBonReception/all"
+        "https://www.k-orissa.com:5000/api/listBonReception/all"
       ); // Update with your API endpoint
       const listBonReceptions = response.data;
 
@@ -403,7 +403,7 @@ const EDitingProductReceptionForm = () => {
   // Fetch all suppliers from the server
   const getAllSuppliers = async () => {
     try {
-      const response = await axios.get("http://84.247.161.47:5000/api/suppliers");
+      const response = await axios.get("https://www.k-orissa.com:5000/api/suppliers");
       const supplierOptions = response.data.map((supplier) => ({
         value: supplier._id,
         label: supplier.FullName,
@@ -430,7 +430,7 @@ const EDitingProductReceptionForm = () => {
     if (query.length > 1) {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/products/search?q=${query}`
+          `https://www.k-orissa.com:5000/api/products/search?q=${query}`
         );
         updatedProducts[productIndex].searchResults = response.data; // Set search results for the specific product
         setProducts(updatedProducts);

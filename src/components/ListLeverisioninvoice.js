@@ -29,7 +29,7 @@ const ListVersionProductsTable = () => {
 
     const fetchReceptionProducts = async () => {
         try {
-            const response = await fetch('http://84.247.161.47:5000/api/listLivraison');
+            const response = await fetch('https://www.k-orissa.com:5000/api/listLivraison');
             if (!response.ok) {
                 throw new Error('Failed to fetch reception products');
             }
@@ -48,7 +48,7 @@ const ListVersionProductsTable = () => {
     const confirmDelete = async () => {
         if (!selectedProduct) return;
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/listLivraison/${selectedProduct._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/listLivraison/${selectedProduct._id}`, {
                 method: 'DELETE',
             });
 
@@ -86,7 +86,7 @@ const ListVersionProductsTable = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/productListReception/${selectedProduct._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/productListReception/${selectedProduct._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

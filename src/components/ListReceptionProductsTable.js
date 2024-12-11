@@ -20,7 +20,7 @@ const ListReceptionProductsTable = () => {
 
     const fetchReceptionProducts = async () => {
         try {
-            const response = await fetch('http://84.247.161.47:5000/api/listBonReception/all');
+            const response = await fetch('https://www.k-orissa.com:5000/api/listBonReception/all');
             if (!response.ok) {
                 throw new Error('Failed to fetch reception products');
             }
@@ -40,7 +40,7 @@ const ListReceptionProductsTable = () => {
     const confirmDelete = async () => {
         if (!selectedProduct) return;
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/productListReception/${selectedProduct._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/productListReception/${selectedProduct._id}`, {
                 method: 'DELETE',
             });
 
@@ -76,7 +76,7 @@ const ListReceptionProductsTable = () => {
         console.log("Updating product ID:", selectedProduct._id); // Log the product ID
     
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/productListReception/${selectedProduct._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/productListReception/${selectedProduct._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

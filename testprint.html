@@ -48,7 +48,7 @@
         // Function to fetch and display invoice data
         async function fetchAndPrintInvoice(id) {
             try {
-                const response = await fetch(`http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${id}`);
+                const response = await fetch(`https://www.k-orissa.com:5000/api/listLivraisonProduct/ProductsByLivraison/${id}`);
                 const data = await response.json();
     
                 // Ensure data is an array and it has products

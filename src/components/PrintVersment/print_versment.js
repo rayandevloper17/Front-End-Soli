@@ -20,7 +20,7 @@ const PrintVersement = ({ isOpen, onClose, paymentId }) => {
   const fetchPaymentData = async () => {
     try {
       const response = await axios.get(
-        `http://84.247.161.47:5000/api/payments/${paymentId}`
+        `https://www.k-orissa.com:5000/api/payments/${paymentId}`
       );
       setPaymentData(response.data);
     } catch (error) {

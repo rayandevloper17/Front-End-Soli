@@ -118,7 +118,7 @@ const EditProduct = () => {
 
     const fetchProductById = async (_id) => {
         try {
-            const response = await axios.get(`http://84.247.161.47:5000/api/products/${_id}`);
+            const response = await axios.get(`https://www.k-orissa.com:5000/api/products/${_id}`);
             const product = response.data;
 
             // Assuming 'ImageProduct' is returned in the response
@@ -157,7 +157,7 @@ const EditProduct = () => {
         }
 
         try {
-            await axios.put(`http://84.247.161.47:5000/api/products/${_id}`, updateData, {
+            await axios.put(`https://www.k-orissa.com:5000/api/products/${_id}`, updateData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             alert('Product updated successfully!');

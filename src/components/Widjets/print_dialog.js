@@ -24,13 +24,13 @@ const PrinterModal = ({ isOpen, onClose, productToPrint ,supplername}) => {
   const handlePrintClick = async () => {
     try {
       const responsesuppler = await axios.get(
-        `http://84.247.161.47:5000/api/suppliers/${supplername}`
+        `https://www.k-orissa.com:5000/api/suppliers/${supplername}`
       );
       const supplerid = responsesuppler.data[0];
       console.log('Supplier Response:', responsesuppler.data);
   
       const response = await axios.get(
-        `http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${productToPrint}`
+        `https://www.k-orissa.com:5000/api/listLivraisonProduct/ProductsByLivraison/${productToPrint}`
       );
   
       const invoiceData = response.data; // Assume this returns an array of products

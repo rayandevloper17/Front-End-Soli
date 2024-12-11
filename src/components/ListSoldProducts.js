@@ -13,7 +13,7 @@ const ListSoldProducts = () => {
   const fetchSoldProducts = async () => {
     try {
       // Fetch sold products data
-      const response = await fetch("http://84.247.161.47:5000/api/listBonReception/all");
+      const response = await fetch("https://www.k-orissa.com:5000/api/listBonReception/all");
       if (!response.ok) throw new Error("Failed to fetch sold products");
 
       const data = await response.json();
@@ -25,7 +25,7 @@ const ListSoldProducts = () => {
             try {
               // Fetch supplier details using the supplier_id._id
               const supplierResponse = await fetch(
-                `http://84.247.161.47:5000/api/suppliers/${product.supplier_id._id}`
+                `https://www.k-orissa.com:5000/api/suppliers/${product.supplier_id._id}`
               );
               if (!supplierResponse.ok) throw new Error("Failed to fetch supplier");
 
@@ -84,7 +84,7 @@ const ListSoldProducts = () => {
     if (!selectedProduct) return;
     try {
       const response = await fetch(
-        `http://84.247.161.47:5000/api/listBonReception/${selectedProduct._id}`,
+        `https://www.k-orissa.com:5000/api/listBonReception/${selectedProduct._id}`,
         { method: "DELETE" }
       );
       if (response.ok) {

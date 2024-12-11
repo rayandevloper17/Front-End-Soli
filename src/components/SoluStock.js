@@ -23,7 +23,7 @@ const SoluStock = () => {
     // Fetch suppliers from the server
     const fetchSuppliers = async () => {
       try {
-        const response = await fetch("http://84.247.161.47:5000/api/suppliers");
+        const response = await fetch("https://www.k-orissa.com:5000/api/suppliers");
         if (response.ok) {
           const data = await response.json();
           setSuppliers(data);
@@ -205,7 +205,7 @@ const SoluStock = () => {
 
     try {
       // Save the payment
-      const response = await fetch("http://84.247.161.47:5000/api/payments", {
+      const response = await fetch("https://www.k-orissa.com:5000/api/payments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -220,7 +220,7 @@ const SoluStock = () => {
         if (selectedSupplierId) {
           const formattedAncienPrix = parseFloat(ancienPrix).toFixed(2); // Ensure the value is properly formatted
           await axios.put(
-            `http://84.247.161.47:5000/api/suppliers/${selectedSupplierId}`, // Use supplier ID here
+            `https://www.k-orissa.com:5000/api/suppliers/${selectedSupplierId}`, // Use supplier ID here
             {
               ancienPrix: formattedAncienPrix, // Update with the new debt
             }

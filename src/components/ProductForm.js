@@ -107,7 +107,7 @@ const ProductForm = () => {
     }
   
     try {
-      const response = await fetch("http://84.247.161.47:5000/api/products", {
+      const response = await fetch("https://www.k-orissa.com:5000/api/products", {
         method: "POST",
         body: formDataToSend,
       });

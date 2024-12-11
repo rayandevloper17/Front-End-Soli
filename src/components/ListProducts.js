@@ -23,7 +23,7 @@ const ListProducts = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://84.247.161.47:5000/api/products');
+            const response = await fetch('https://www.k-orissa.com:5000/api/products');
             if (!response.ok) {
                 throw new Error('Failed to fetch products');
             }
@@ -52,7 +52,7 @@ const ListProducts = () => {
     const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/products/${selectedProduct._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/products/${selectedProduct._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const ListProducts = () => {
     const confirmDelete = async () => {
         if (!selectedProduct) return;
         try {
-            const response = await fetch(`http://84.247.161.47:5000/api/products/${selectedProduct._id}`, {
+            const response = await fetch(`https://www.k-orissa.com:5000/api/products/${selectedProduct._id}`, {
                 method: 'DELETE',
             });
 
@@ -116,7 +116,7 @@ const ListProducts = () => {
                                     <div className="image-preview">
                                         <img
                                             src={product.ImageProduct.startsWith('/uploads/')
-                                                ? `http://84.247.161.47:5000${product.ImageProduct}`
+                                                ? `https://www.k-orissa.com:5000${product.ImageProduct}`
                                                 : product.ImageProduct}
                                             alt={'image-preview'}
                                             className="product-image"

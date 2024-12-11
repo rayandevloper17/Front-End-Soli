@@ -150,7 +150,7 @@ const AddUser = () => {
     }
   
     try {
-      const response = await axios.post('http://84.247.161.47:5000/api/suppliers', formData);
+      const response = await axios.post('https://www.k-orissa.com:5000/api/suppliers', formData);
       console.log('Supplier added successfully:', response.data);
       setSnackbar({ 
         message: 'User added successfully!', 

@@ -72,7 +72,7 @@ const ProductReceptionUpdateForm = () => {
 
     try {
       const response = await axios.post(
-        "http://84.247.161.47:5000/api/listBonReception",
+        "https://www.k-orissa.com:5000/api/listBonReception",
         receptionData,
         {
           headers: {
@@ -94,7 +94,7 @@ const ProductReceptionUpdateForm = () => {
   const fetchLastNorder = async () => {
     try {
       const response = await axios.get(
-        "http://84.247.161.47:5000/api/listBonReception"
+        "https://www.k-orissa.com:5000/api/listBonReception"
       ); // Update with your API endpoint
       const listBonReceptions = response.data;
 
@@ -133,7 +133,7 @@ const ProductReceptionUpdateForm = () => {
   // Fetch all suppliers from the server
   const getAllSuppliers = async () => {
     try {
-      const response = await axios.get("http://84.247.161.47:5000/api/suppliers"); // Adjust the API endpoint as needed
+      const response = await axios.get("https://www.k-orissa.com:5000/api/suppliers"); // Adjust the API endpoint as needed
       setSuppliers(response.data);
     } catch (error) {
       console.error("Error fetching suppliers", error);
@@ -154,7 +154,7 @@ const ProductReceptionUpdateForm = () => {
     if (query.length > 2) {
       try {
         const response = await axios.get(
-          `http://84.247.161.47:5000/api/products/search?q=${query}`
+          `https://www.k-orissa.com:5000/api/products/search?q=${query}`
         );
         updatedProducts[productIndex].searchResults = response.data; // Set search results for the specific product
         setProducts(updatedProducts);

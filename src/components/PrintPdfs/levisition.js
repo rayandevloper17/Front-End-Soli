@@ -13,7 +13,7 @@ const InvoicePage = () => {
         if (productToPrint) {
             // Fetch the data based on the product ID passed from the URL
             axios
-                .get(`http://84.247.161.47:5000/api/listLivraisonProduct/ProductsByLivraison/${productToPrint}`)
+                .get(`https://www.k-orissa.com:5000/api/listLivraisonProduct/ProductsByLivraison/${productToPrint}`)
                 .then((response) => {
                     const data = response.data;
                     if (Array.isArray(data) && data.length > 0) {

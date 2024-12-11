@@ -10,7 +10,7 @@ const SuppliersTable = () => {
 
     useEffect(() => {
         // Fetch suppliers from API
-        fetch('http://84.247.161.47:5000/api/suppliers')
+        fetch('https://www.k-orissa.com:5000/api/suppliers')
             .then(response => response.json())
             .then(data => setSuppliers(data))
             .catch(error => console.error('Error fetching suppliers:', error));
@@ -27,7 +27,7 @@ const SuppliersTable = () => {
     };
 
     const handleDelete = (id) => {
-        fetch(`http://84.247.161.47:5000/api/suppliers/${id}`, {
+        fetch(`https://www.k-orissa.com:5000/api/suppliers/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
@@ -44,7 +44,7 @@ const SuppliersTable = () => {
     };
 
     const handleSave = (id) => {
-        fetch(`http://84.247.161.47:5000/api/suppliers/${id}`, {
+        fetch(`https://www.k-orissa.com:5000/api/suppliers/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),

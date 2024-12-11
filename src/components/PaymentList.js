@@ -17,7 +17,7 @@ const PaymentList = () => {
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const response = await fetch("http://84.247.161.47:5000/api/payments");
+        const response = await fetch("https://www.k-orissa.com:5000/api/payments");
         if (response.ok) {
           const data = await response.json();
           setPayments(data);
@@ -44,7 +44,7 @@ const PaymentList = () => {
   const confirmDelete = async () => {
     try {
       // Make a DELETE request to the backend to delete the payment
-      const response = await fetch(`http://84.247.161.47:5000/api/payments/${selectedPayment}`, {
+      const response = await fetch(`https://www.k-orissa.com:5000/api/payments/${selectedPayment}`, {
         method: "DELETE",
       });
   

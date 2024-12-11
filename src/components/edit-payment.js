@@ -70,7 +70,7 @@ const EditPayment = () => {
   useEffect(() => {
     const fetchSuppliers = async () => {
       try {
-        const response = await fetch("http://84.247.161.47:5000/api/suppliers");
+        const response = await fetch("https://www.k-orissa.com:5000/api/suppliers");
         if (response.ok) {
           const data = await response.json();
           setSuppliers(data);
@@ -88,7 +88,7 @@ const EditPayment = () => {
     const fetchPayment = async () => {
       try {
         const response = await fetch(
-          `http://84.247.161.47:5000/api/payments/${paymentId}`
+          `https://www.k-orissa.com:5000/api/payments/${paymentId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -226,7 +226,7 @@ const EditPayment = () => {
 
     try {
       const response = await fetch(
-        `http://84.247.161.47:5000/api/payments/${paymentId}`,
+        `https://www.k-orissa.com:5000/api/payments/${paymentId}`,
         {
           method: "PUT",
           headers: {
@@ -240,7 +240,7 @@ const EditPayment = () => {
         if (selectedSupplierId) {
           const formattedAncienPrix = parseFloat(ancienPrix).toFixed(2); // Ensure the value is properly formatted
           await axios.put(
-            `http://84.247.161.47:5000/api/suppliers/${selectedSupplierId}`, // Use supplier ID here
+            `https://www.k-orissa.com:5000/api/suppliers/${selectedSupplierId}`, // Use supplier ID here
             {
               ancienPrix: formattedAncienPrix, // Update with the new debt
             }
