@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Lottie from "react-lottie";
 import successAnimation from "../animations/success.json"; // Update with actual path
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const EditPayment = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -12,10 +13,14 @@ const EditPayment = () => {
   const [ancienPrix, setAncienPrix] = useState("");
   const [originalAncienPrix, setOriginalAncienPrix] = useState("");
   const [priceInput, setPriceInput] = useState("");
+  const [selectedSupplierId, setSelectedSupplierId] = useState(null); // New state for supplier ID
+  const [deensuppler, setDeensuppler] = useState(""); // State to store the initial debt value
   const [note, setNote] = useState("");
   const [showAnimation, setShowAnimation] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(null);  // Tracks the index of the focused item
   const [dateVersment, setDateVersment] = useState(
    
+
     new Date().toISOString().split("T")[0]
   );
   const { paymentId } = useParams();
@@ -30,6 +35,36 @@ const EditPayment = () => {
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
+  };
+  useEffect(() => {
+    setFocusedIndex(-1);
+  }, [filteredSuppliers]);
+
+  const handleKeyDown = (e) => {
+    if (filteredSuppliers.length === 0) return;
+
+    // Arrow Down
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setFocusedIndex(prevIndex =>
+        prevIndex < filteredSuppliers.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    }
+
+    // Arrow Up
+    else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setFocusedIndex(prevIndex =>
+        prevIndex > 0 ? prevIndex - 1 : prevIndex
+      );
+    }
+
+    // Enter
+    else if (e.key === 'Enter' && focusedIndex >= 0) {
+      e.preventDefault();
+      const selectedSupplier = filteredSuppliers[focusedIndex];
+      handleSupplierSelect(selectedSupplier.RaisonSocial);
+    }
   };
 
   useEffect(() => {
@@ -85,10 +120,9 @@ const EditPayment = () => {
     setClientName(value);
 
     if (value.length >= 3) {
-      const filtered = suppliers.filter(
-        (supplier) =>
-          supplier.FullName &&
-          supplier.FullName.toLowerCase().includes(value.toLowerCase())
+      const filtered = suppliers.filter((supplier) =>
+        supplier.RaisonSocial &&
+        supplier.RaisonSocial.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredSuppliers(filtered);
     } else {
@@ -97,17 +131,31 @@ const EditPayment = () => {
   };
 
   const handleSupplierSelect = (fullName) => {
+    if (!fullName) {
+      console.error("Invalid supplier name");
+      return;
+    }
+
     setClientName(fullName);
     const selectedSupplier = suppliers.find(
-      (supplier) => supplier.FullName === fullName
+      (supplier) => supplier.RaisonSocial === fullName
     );
-    const selectedPrix =
-      selectedSupplier && selectedSupplier.ancienPrix
+
+    if (selectedSupplier) {
+      const selectedPrix = selectedSupplier.ancienPrix &&
+        selectedSupplier.ancienPrix.$numberDecimal
         ? parseFloat(selectedSupplier.ancienPrix.$numberDecimal)
         : 0;
-    setAncienPrix(selectedPrix.toFixed(2));
-    setOriginalAncienPrix(selectedPrix);
-    setFilteredSuppliers([]);
+
+      setSelectedSupplierId(selectedSupplier._id);
+      setAncienPrix(selectedPrix.toFixed(2));
+      setOriginalAncienPrix(selectedPrix);
+      setDeensuppler(selectedPrix.toFixed(2));
+      setFilteredSuppliers([]);
+      setFocusedIndex(-1);
+    } else {
+      console.error("Supplier not found with name:", fullName);
+    }
   };
 
   const handlePriceInputChange = (e) => {
@@ -165,6 +213,7 @@ const EditPayment = () => {
     navigate(`/PaymentList`); // Navigate to edit page with the paymentId
   };
   const handleEditPayment = async () => {
+    
     const paymentData = {
       dateVersment,
       clientName,
@@ -172,6 +221,8 @@ const EditPayment = () => {
       amountPaid: priceInput,
       note,
     };
+    console.log(paymentData);
+    
 
     try {
       const response = await fetch(
@@ -186,6 +237,19 @@ const EditPayment = () => {
       );
 
       if (response.ok) {
+        if (selectedSupplierId) {
+          const formattedAncienPrix = parseFloat(ancienPrix).toFixed(2); // Ensure the value is properly formatted
+          await axios.put(
+            `http://84.247.161.47:5000/api/suppliers/${selectedSupplierId}`, // Use supplier ID here
+            {
+              ancienPrix: formattedAncienPrix, // Update with the new debt
+            }
+          );
+
+          console.log("Supplier ancienPrix updated successfully.");
+        } else {
+          console.warn("No supplier selected to update ancienPrix.");
+        }
         setShowAnimation(true); // Show animation
       
         // Wait a brief moment for animation to appear, then navigate
@@ -241,31 +305,39 @@ const formattedDate = new Date(dateVersment).toISOString().split('T')[0]; // Con
 
           <div className="col">
             <label className="label" htmlFor="clientName">
-              Client Name:
+              Nome Clients:
             </label>
             <div className="input-icon">
+              <i aria-label="User Icon" className="client-icon"></i>
               <input
                 type="text"
                 id="clientName"
                 className="input-field"
                 placeholder="Client Name"
+                aria-label="Client Name Input"
                 value={clientName}
                 onChange={handleClientNameChange}
+                onKeyDown={handleKeyDown}
+                autoComplete="off"
               />
               {filteredSuppliers.length > 0 && (
-                <ul className="autocomplete-dropdown">
-                  {filteredSuppliers.map((supplier) => (
+                <ul className="autocomplete-dropdown" role="listbox">
+                  {filteredSuppliers.map((supplier, index) => (
                     <li
                       key={supplier._id}
-                      onClick={() => handleSupplierSelect(supplier.FullName)}
+                      onClick={() => handleSupplierSelect(supplier.RaisonSocial)}
+                      className={focusedIndex === index ? 'focused' : ''}
+                      role="option"
+                      aria-selected={focusedIndex === index}
                     >
-                      {supplier.FullName}
+                      {supplier.RaisonSocial}
                     </li>
                   ))}
                 </ul>
               )}
             </div>
           </div>
+
 
           <div className="col">
             <label className="label" htmlFor="clientType">

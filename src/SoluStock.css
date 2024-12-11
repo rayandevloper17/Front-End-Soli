@@ -344,3 +344,15 @@
 .focused {
   background-color: #ddd; /* Change to any color you prefer */
 }
+.autocomplete-dropdown .focused {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.autocomplete-dropdown li {
+  padding: 8px 12px;
+}
+
+.autocomplete-dropdown li:hover {
+  background-color: #f0f0f0;
+}

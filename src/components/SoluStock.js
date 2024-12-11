@@ -40,6 +40,36 @@ const SoluStock = () => {
   const handleCloseClick = () => {
     navigate("/"); // Navigate to the home page
   };
+  useEffect(() => {
+    setFocusedIndex(-1);
+  }, [filteredSuppliers]);
+
+  const handleKeyDown = (e) => {
+    if (filteredSuppliers.length === 0) return;
+
+    // Arrow Down
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setFocusedIndex(prevIndex =>
+        prevIndex < filteredSuppliers.length - 1 ? prevIndex + 1 : prevIndex
+      );
+    }
+
+    // Arrow Up
+    else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setFocusedIndex(prevIndex =>
+        prevIndex > 0 ? prevIndex - 1 : prevIndex
+      );
+    }
+
+    // Enter
+    else if (e.key === 'Enter' && focusedIndex >= 0) {
+      e.preventDefault();
+      const selectedSupplier = filteredSuppliers[focusedIndex];
+      handleSupplierSelect(selectedSupplier.RaisonSocial);
+    }
+  };
 
   const handleClientNameChange = (e) => {
     const value = e.target.value;
@@ -47,14 +77,14 @@ const SoluStock = () => {
 
     if (value.length >= 3) {
       const filtered = suppliers.filter((supplier) =>
-        supplier.RaisonSocial && supplier.RaisonSocial.toLowerCase().includes(value.toLowerCase())
+        supplier.RaisonSocial &&
+        supplier.RaisonSocial.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredSuppliers(filtered);
     } else {
       setFilteredSuppliers([]);
     }
   };
-
   const handleBlur = (e) => {
     let value = e.target.value;
 
@@ -69,42 +99,34 @@ const SoluStock = () => {
 
 
   const handleSupplierSelect = (fullName) => {
-    // Ensure the fullName is valid and not empty
     if (!fullName) {
       console.error("Invalid supplier name");
       return;
     }
-  
-    // Set the client name (full name of the supplier)
+
     setClientName(fullName);
-  
-    // Find the selected supplier in the list of suppliers
-    const selectedSupplier = suppliers.find((supplier) => supplier.RaisonSocial === fullName);
-  
-    // Ensure that the selected supplier exists and contains the expected properties
+    const selectedSupplier = suppliers.find(
+      (supplier) => supplier.RaisonSocial === fullName
+    );
+
     if (selectedSupplier) {
-      // Safely extract ancienPrix and parse it as a number (using 0 as a default value)
-      const selectedPrix = selectedSupplier.ancienPrix && selectedSupplier.ancienPrix.$numberDecimal
+      const selectedPrix = selectedSupplier.ancienPrix &&
+        selectedSupplier.ancienPrix.$numberDecimal
         ? parseFloat(selectedSupplier.ancienPrix.$numberDecimal)
         : 0;
-  
-      // Log selectedPrix for debugging purposes
-      console.log("selectedPrix:", selectedPrix);
-  
-      // Update states with the supplier data
+
       setSelectedSupplierId(selectedSupplier._id);
-      setAncienPrix(selectedPrix.toFixed(2));  // Use toFixed for formatting the price to 2 decimals
-      setOriginalAncienPrix(selectedPrix);  // Keep the original unformatted price if needed
-      setDeensuppler(selectedPrix.toFixed(2));  // Set the value of Deensuppler state (adjust this name if necessary)
-  
-      // Optionally clear the suppliers list to hide the dropdown
-      setFilteredSuppliers([]);  // Clear filtered suppliers after selection
+      setAncienPrix(selectedPrix.toFixed(2));
+      setOriginalAncienPrix(selectedPrix);
+      setDeensuppler(selectedPrix.toFixed(2));
+      setFilteredSuppliers([]);
+      setFocusedIndex(-1);
     } else {
-      // Log an error if the supplier is not found
       console.error("Supplier not found with name:", fullName);
     }
   };
-  
+
+
   const renderSupplierList = () => {
     return filteredSuppliers.map((supplier, index) => (
       <li
@@ -123,25 +145,7 @@ const SoluStock = () => {
       </li>
     ));
   };
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowDown') {
-      // التنقل للأسفل
-      if (focusedIndex < filteredSuppliers.length - 1) {
-        setFocusedIndex(focusedIndex + 1);
-      }
-    } else if (event.key === 'ArrowUp') {
-      // التنقل للأعلى
-      if (focusedIndex > 0) {
-        setFocusedIndex(focusedIndex - 1);
-      }
-    } else if (event.key === 'Enter' && focusedIndex >= 0) {
-      // تحديد الخيار عند الضغط على Enter
-      const selectedSupplier = filteredSuppliers[focusedIndex];
-      setClientName(selectedSupplier.RaisonSocial); // تعيين الاسم المختار في الحقل
-      setFilteredSuppliers([]); // إخفاء القائمة بعد الاختيار
-    }
-  };
-  
+
 
 
 
@@ -226,6 +230,7 @@ const SoluStock = () => {
         } else {
           console.warn("No supplier selected to update ancienPrix.");
         }
+        
 
         // Clear form fields after successful save and update
         setClientName("");
@@ -295,16 +300,18 @@ const SoluStock = () => {
                 aria-label="Client Name Input"
                 value={clientName}
                 onChange={handleClientNameChange}
-                onKeyDown={handleKeyDown} // Handle keydown events for navigation
-                autoComplete="off" // Disable the browser's autocomplete
+                onKeyDown={handleKeyDown}
+                autoComplete="off"
               />
               {filteredSuppliers.length > 0 && (
-                <ul className="autocomplete-dropdown">
+                <ul className="autocomplete-dropdown" role="listbox">
                   {filteredSuppliers.map((supplier, index) => (
                     <li
                       key={supplier._id}
                       onClick={() => handleSupplierSelect(supplier.RaisonSocial)}
-                      className={focusedIndex === index ? 'focused' : ''}  // Apply 'focused' class to the highlighted item
+                      className={focusedIndex === index ? 'focused' : ''}
+                      role="option"
+                      aria-selected={focusedIndex === index}
                     >
                       {supplier.RaisonSocial}
                     </li>
